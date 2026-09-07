@@ -24,8 +24,6 @@ Instead of using Selenium/Playwright and scraping rendered HTML, we can call tho
 
 ---
 
-## The four steps
-
 ### Step 1 — Page through the Discover sorts
 
 ```
@@ -62,18 +60,6 @@ Third host. Returns CDN **URLs** Entries can come back `state: "Pending"` or `"B
 ### Step 4 — Merge and write
 
 The sorts response and the details response each carry fields the other lacks. Age ratings and vote counts come only from step 1; descriptions come only from step 2. Step 4 joins them on `universe_id`.
-
-
-## Configuration
-
-| Setting | Default | What it does |
-|---|---|---|
-| `COUNTRY` | `"us"` | Which country's charts to read |
-| `DEVICE` | `"computer"` | Mobile and desktop chart differently |
-| `BATCH_SIZE` | `25` | Games per batched request |
-| `PAUSE` | `0.4` | Seconds between requests |
-| `MAX_SORT_PAGES` | `25` | Safety stop on sort pagination |
-| `DOWNLOAD_IMAGES` | `False` | Save logo files, not just URLs |
 
 ---
 
