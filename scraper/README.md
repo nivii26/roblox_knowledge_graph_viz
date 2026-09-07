@@ -13,9 +13,8 @@ pip install requests
 python scrape_roblox.py
 ```
 
-Writes `games.csv` next to the script (moved to ../data/)
+Writes `games.csv` next to the script (moved to ../data/). To also download the logo image files: DOWNLOAD_IMAGES = True
 
-To also download the logo image files: DOWNLOAD_IMAGES = True
 ---
 
 Roblox's website is a React app. If you fetch `roblox.com/charts` and parse the HTML, contains mostly the application shell — the content arrives afterward, when the page's JavaScript calls Roblox's public JSON APIs.
@@ -62,5 +61,4 @@ Third host. Returns CDN **URLs** Entries can come back `state: "Pending"` or `"B
 The sorts response and the details response each carry fields the other lacks. Age ratings and vote counts come only from step 1; descriptions come only from step 2. Step 4 joins them on `universe_id`.
 
 ---
-
 **This is a US-desktop-popularity sample**, not a representative sample of Roblox. 
