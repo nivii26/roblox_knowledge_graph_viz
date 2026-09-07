@@ -15,23 +15,12 @@ python scrape_roblox.py
 
 Writes `games.csv` next to the script.
 
-To also download the logo image files:
-
-```python
-DOWNLOAD_IMAGES = True    # near the top of the script
-```
-
-That adds ~800 requests (~5 min, 30–60 MB) and writes `logos/{universe_id}.png`.
-
+To also download the logo image files: DOWNLOAD_IMAGES = True
 ---
-
-## What it's actually doing
 
 Roblox's website is a React app. If you fetch `roblox.com/charts` and parse the HTML, you get an empty shell — the content arrives afterward, when the page's JavaScript calls Roblox's JSON APIs.
 
-So this script skips the browser and calls those same APIs directly. Same data the page shows you, already structured. No BeautifulSoup, no Selenium, one dependency.
-
-All endpoints are public and unauthenticated.
+So this script skips the browser and calls those same APIs directly. All endpoints are public and unauthenticated.
 
 ---
 
@@ -47,7 +36,7 @@ GET https://apis.roblox.com/explore-api/v1/get-sorts
 
 Returns the sections of the charts page — "Top Trending", "Top Earning", "Trending in RPG", and so on.
 
-**The response is paginated.** It returns 6 entries at a time plus a `nextSortsPageToken`. Following that token is the difference between 5 sorts and **26 sorts** — miss it and you lose two-thirds of your data.
+**The response is paginated.** It returns 6 entries at a time plus a `nextSortsPageToken`. 
 
 Each sort arrives with **its games already attached** (~96 per sort), so there's no follow-up call needed to expand a row.
 
